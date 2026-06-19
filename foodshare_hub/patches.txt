@@ -1,0 +1,3 @@
+# Patches for FoodShare Hub
+# Add your patch entries here
+# Example: foodshare_hub.patches.v1_0.update_doctype_fields

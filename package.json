@@ -1,0 +1,14 @@
+{
+  "name": "foodshare_hub",
+  "version": "1.0.0",
+  "description": "Leftover Food Sharing Platform for Frappe v15",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sudhakar1110/foodshare_hub.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {}
+}

@@ -1,0 +1,59 @@
+{% extends "templates/web.html" %}
+{% block page_content %}
+<section class="request-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h1 class="mb-4">Request Food</h1>
+                <p class="lead mb-4">If your organization or community needs food assistance, we're here to help.</p>
+                
+                {% if frappe.session.user == 'Guest' %}
+                <div class="alert alert-info">
+                    <p class="mb-0"><strong>Please login to request food.</strong></p>
+                    <a href="/login" class="btn btn-primary mt-3">Login</a>
+                </div>
+                {% else %}
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title mb-4">Create Food Request</h3>
+                        <p>Click the button below to submit a new food request.</p>
+                        <a href="/app/food-request/new-food-request-1" class="btn btn-primary btn-lg">Create Request</a>
+                    </div>
+                </div>
+                {% endif %}
+                
+                <div class="mt-5">
+                    <h3>Who Can Request</h3>
+                    <ul>
+                        <li>Registered NGOs and charities</li>
+                        <li>Shelters and community centers</li>
+                        <li>Educational institutions</li>
+                        <li>Community organizations</li>
+                        <li>Families in need</li>
+                    </ul>
+                </div>
+                
+                <div class="mt-5">
+                    <h3>Request Process</h3>
+                    <ol>
+                        <li><strong>Submit Request:</strong> Fill out the food request form with your requirements.</li>
+                        <li><strong>Review:</strong> Our team reviews your request based on availability.</li>
+                        <li><strong>Approval:</strong> Approved requests are matched with available donations.</li>
+                        <li><strong>Delivery:</strong> Food is delivered to your specified location.</li>
+                    </ol>
+                </div>
+                
+                <div class="mt-5">
+                    <h3>Priority Levels</h3>
+                    <ul>
+                        <li><strong>Low:</strong> General food requirements</li>
+                        <li><strong>Medium:</strong> Regular community feeding programs</li>
+                        <li><strong>High:</strong> Urgent community needs</li>
+                        <li><strong>Urgent:</strong> Emergency food assistance required</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

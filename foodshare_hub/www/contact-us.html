@@ -1,0 +1,113 @@
+{% extends "templates/web.html" %}
+{% block page_content %}
+<section class="contact-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h1 class="mb-4">Contact Us</h1>
+                <p class="lead mb-4">We'd love to hear from you. Get in touch with us for any inquiries or assistance.</p>
+                
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3 class="card-title mb-4">Get in Touch</h3>
+                        
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <h5>📧 Email</h5>
+                                <p><a href="mailto:admin@foodsharehub.com">admin@foodsharehub.com</a></p>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>📞 Phone</h5>
+                                <p>+1-555-FOOD-HUB</p>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <h5>📍 Address</h5>
+                                <p>123 Food Share Street<br>Community Center<br>Food City, FC 12345</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>⏰ Working Hours</h5>
+                                <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 4:00 PM<br>Sunday: Closed</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3 class="card-title mb-4">Frequently Asked Questions</h3>
+                        
+                        <div class="accordion" id="faqAccordion">
+                            <div class="card">
+                                <div class="card-header" id="headingOne">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne">
+                                            How can I donate food?
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseOne" class="collapse show" data-parent="#faqAccordion">
+                                    <div class="card-body">
+                                        You can donate food by creating a donation entry through our website. Simply go to the "Donate Food" page, login with your credentials, and fill out the donation form with details about the food you wish to donate.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <div class="card-header" id="headingTwo">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo">
+                                            What types of food can I donate?
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseTwo" class="collapse" data-parent="#faqAccordion">
+                                    <div class="card-body">
+                                        We accept cooked meals, fresh produce, baked goods, dairy products, canned goods, and beverages. All food must be within its expiry date and properly packaged.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree">
+                                            How do I request food assistance?
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseThree" class="collapse" data-parent="#faqAccordion">
+                                    <div class="card-body">
+                                        Organizations and individuals can request food through our "Request Food" page. Login and fill out the request form with your requirements. Our team will review and match your request with available donations.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <div class="card-header" id="headingFour">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour">
+                                            How can I become a volunteer?
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseFour" class="collapse" data-parent="#faqAccordion">
+                                    <div class="card-body">
+                                        To become a volunteer, please contact us via email or phone. We welcome volunteers to help with food pickup and delivery operations.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <a href="/" class="btn btn-outline-secondary">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

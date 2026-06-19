@@ -1,0 +1,128 @@
+[
+  {
+    "doctype": "Workflow",
+    "name": "Food Donation Workflow",
+    "document_type": "Food Donation",
+    "is_active": 1,
+    "workflow_name": "Food Donation Workflow",
+    "workflow_state_field": "status",
+    "states": [
+      {
+        "state": "Draft",
+        "doc_status": "0",
+        "is_optional_state": 0,
+        "allow_edit": "FoodShare Administrator"
+      },
+      {
+        "state": "Available",
+        "doc_status": "0",
+        "is_optional_state": 0,
+        "allow_edit": "FoodShare Administrator"
+      },
+      {
+        "state": "Collected",
+        "doc_status": "0",
+        "is_optional_state": 0,
+        "allow_edit": "FoodShare Administrator"
+      },
+      {
+        "state": "Expired",
+        "doc_status": "0",
+        "is_optional_state": 0,
+        "allow_edit": "FoodShare Administrator"
+      }
+    ],
+    "transitions": [
+      {
+        "state": "Draft",
+        "action": "Make Available",
+        "next_state": "Available",
+        "allowed": "FoodShare Administrator"
+      },
+      {
+        "state": "Available",
+        "action": "Mark Collected",
+        "next_state": "Collected",
+        "allowed": "FoodShare Administrator"
+      },
+      {
+        "state": "Available",
+        "action": "Mark Expired",
+        "next_state": "Expired",
+        "allowed": "FoodShare Administrator"
+      },
+      {
+        "state": "Draft",
+        "action": "Mark Expired",
+        "next_state": "Expired",
+        "allowed": "FoodShare Administrator"
+      }
+    ]
+  },
+  {
+    "doctype": "Workflow",
+    "name": "Food Request Workflow",
+    "document_type": "Food Request",
+    "is_active": 1,
+    "workflow_name": "Food Request Workflow",
+    "workflow_state_field": "status",
+    "states": [
+      {
+        "state": "Draft",
+        "doc_status": "0",
+        "is_optional_state": 0,
+        "allow_edit": "FoodShare Administrator"
+      },
+      {
+        "state": "Submitted",
+        "doc_status": "0",
+        "is_optional_state": 0,
+        "allow_edit": "FoodShare Administrator"
+      },
+      {
+        "state": "Approved",
+        "doc_status": "0",
+        "is_optional_state": 0,
+        "allow_edit": "FoodShare Administrator"
+      },
+      {
+        "state": "Fulfilled",
+        "doc_status": "0",
+        "is_optional_state": 0,
+        "allow_edit": "FoodShare Administrator"
+      },
+      {
+        "state": "Rejected",
+        "doc_status": "0",
+        "is_optional_state": 0,
+        "allow_edit": "FoodShare Administrator"
+      }
+    ],
+    "transitions": [
+      {
+        "state": "Draft",
+        "action": "Submit",
+        "next_state": "Submitted",
+        "allowed": "FoodShare Administrator"
+      },
+      {
+        "state": "Submitted",
+        "action": "Approve",
+        "next_state": "Approved",
+        "allowed": "FoodShare Administrator"
+      },
+      {
+        "state": "Submitted",
+        "action": "Reject",
+        "next_state": "Rejected",
+        "allowed": "FoodShare Administrator"
+      },
+      {
+        "state": "Approved",
+        "action": "Mark Fulfilled",
+        "next_state": "Fulfilled",
+        "allowed": "FoodShare Administrator"
+      }
+    ]
+  }
+]

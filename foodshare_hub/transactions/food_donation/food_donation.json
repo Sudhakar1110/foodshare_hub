@@ -1,0 +1,122 @@
+{
+  "doctype": "DocType",
+  "name": "Food Donation",
+  "module": "Transactions",
+  "custom": 0,
+  "istable": 0,
+  "autoname": "FD-.YYYY.-.#####",
+  "naming_rule": "Expression",
+  "editable_grid": 0,
+  "track_changes": 1,
+  "engine": "InnoDB",
+  "is_submittable": 0,
+  "has_web_view": 1,
+  "workflow_state_field": "status",
+  "fields": [
+    {
+      "fieldname": "donor",
+      "label": "Donor",
+      "fieldtype": "Link",
+      "options": "Donor",
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "food_category",
+      "label": "Food Category",
+      "fieldtype": "Link",
+      "options": "Food Category",
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "food_description",
+      "label": "Food Description",
+      "fieldtype": "Small Text",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "quantity",
+      "label": "Quantity",
+      "fieldtype": "Float",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "unit",
+      "label": "Unit",
+      "fieldtype": "Select",
+      "options": "Kg\nLiters\nPieces\nBoxes\nPackages",
+      "default": "Kg",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "pickup_datetime",
+      "label": "Pickup Date & Time",
+      "fieldtype": "Datetime",
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "expiry_datetime",
+      "label": "Expiry Date & Time",
+      "fieldtype": "Datetime",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "pickup_address",
+      "label": "Pickup Address",
+      "fieldtype": "Small Text",
+      "in_list_view": 0
+    },
+    {
+      "fieldname": "status",
+      "label": "Status",
+      "fieldtype": "Select",
+      "options": "Draft\nAvailable\nCollected\nExpired",
+      "default": "Draft",
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "remarks",
+      "label": "Remarks",
+      "fieldtype": "Text",
+      "hidden": 1
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    },
+    {
+      "role": "FoodShare Administrator",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    },
+    {
+      "role": "Donor User",
+      "read": 1,
+      "write": 1,
+      "create": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "track_seen": 1,
+  "index_web_pages_for_search": 1,
+  "website": {
+    "condition_field": "status",
+    "condition_value": "Available"
+  }
+}

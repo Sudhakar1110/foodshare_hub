@@ -1,0 +1,107 @@
+{% extends "templates/web.html" %}
+{% block page_content %}
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center min-vh-75">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="display-4 font-weight-bold mb-4">FoodShare Hub</h1>
+                <p class="lead mb-4">Connecting donors and receivers to reduce food waste and fight hunger in our community.</p>
+                <div class="d-flex justify-content-center gap-3 flex-wrap">
+                    <a href="/donate-food" class="btn btn-primary btn-lg">Donate Food</a>
+                    <a href="/request-food" class="btn btn-outline-primary btn-lg">Request Food</a>
+                    <a href="/available-donations" class="btn btn-secondary btn-lg">Browse Available</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="stats-section py-5 bg-light">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-4 mb-4">
+                <div class="stat-card">
+                    <h2 class="display-4 text-primary">{{ donations_count }}</h2>
+                    <p class="lead">Available Donations</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="stat-card">
+                    <h2 class="display-4 text-success">{{ requests_count }}</h2>
+                    <p class="lead">Pending Requests</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="stat-card">
+                    <h2 class="display-4 text-info">24/7</h2>
+                    <p class="lead">Support Available</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features-section py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">How It Works</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="feature-card text-center p-4">
+                    <div class="feature-icon mb-3">🍽️</div>
+                    <h3>Donors Contribute</h3>
+                    <p>Restaurants, caterers, and individuals can donate surplus food easily.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="feature-card text-center p-4">
+                    <div class="feature-icon mb-3">🚚</div>
+                    <h3>We Collect & Deliver</h3>
+                    <p>Our volunteers pick up donations and deliver to those in need.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="feature-card text-center p-4">
+                    <div class="feature-icon mb-3">❤️</div>
+                    <h3>Communities Benefit</h3>
+                    <p>Food reaches shelters, NGOs, and families who need it most.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% if recent_donations %}
+<section class="recent-section py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">Recent Available Donations</h2>
+        <div class="row">
+            {% for donation in recent_donations %}
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card donation-card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ donation.food_category }}</h5>
+                        <p class="card-text">
+                            <strong>Quantity:</strong> {{ donation.quantity }} {{ donation.unit }}<br>
+                            <strong>Pickup:</strong> {{ frappe.format(donation.pickup_datetime, 'Datetime') }}
+                        </p>
+                        <a href="/app/food-donation/{{ donation.name }}" class="btn btn-sm btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-4">
+            <a href="/available-donations" class="btn btn-outline-primary">View All Available Donations</a>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<section class="cta-section py-5 text-white text-center" style="background-color: #28a745;">
+    <div class="container">
+        <h2 class="mb-4">Join the Food Sharing Movement</h2>
+        <p class="lead mb-4">Together, we can reduce food waste and help those in need.</p>
+        <a href="/contact-us" class="btn btn-light btn-lg">Contact Us to Get Started</a>
+    </div>
+</section>
+{% endblock %}

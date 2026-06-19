@@ -1,0 +1,56 @@
+{% extends "templates/web.html" %}
+{% block page_content %}
+<section class="available-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="mb-4">Available Food Donations</h1>
+                <p class="lead mb-4">Browse all currently available food donations ready for pickup.</p>
+                
+                {% if donations %}
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Category</th>
+                                <th>Description</th>
+                                <th>Quantity</th>
+                                <th>Pickup Time</th>
+                                <th>Expiry Time</th>
+                                <th>Pickup Address</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for donation in donations %}
+                            <tr>
+                                <td><strong>{{ donation.food_category }}</strong></td>
+                                <td>{{ donation.food_description or '-' }}</td>
+                                <td>{{ donation.quantity }} {{ donation.unit }}</td>
+                                <td>{{ frappe.format(donation.pickup_datetime, 'Datetime') }}</td>
+                                <td>{{ frappe.format(donation.expiry_datetime, 'Datetime') }}</td>
+                                <td>{{ donation.pickup_address or '-' }}</td>
+                                <td>
+                                    <a href="/app/food-donation/{{ donation.name }}" class="btn btn-sm btn-primary">View</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <div class="alert alert-info">
+                    <h4 class="alert-heading">No Available Donations</h4>
+                    <p class="mb-0">Currently there are no food donations available. Please check back later or consider donating food to help those in need.</p>
+                </div>
+                {% endif %}
+                
+                <div class="mt-5">
+                    <a href="/donate-food" class="btn btn-success btn-lg">Donate Food</a>
+                    <a href="/request-food" class="btn btn-outline-primary btn-lg ml-2">Request Food</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

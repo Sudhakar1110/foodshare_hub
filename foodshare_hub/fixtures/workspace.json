@@ -1,0 +1,92 @@
+[
+  {
+    "doctype": "Workspace",
+    "name": "FoodShare Hub",
+    "module": "FoodShare Hub",
+    "icon": "share-alt",
+    "color": "green",
+    "label": "FoodShare Hub",
+    "type": "Module",
+    "is_hidden": 0,
+    "cards": [
+      {
+        "label": "Masters",
+        "icon": "th",
+        "items": [
+          {
+            "label": "Food Category",
+            "link_to": "Food Category",
+            "type": "Link"
+          },
+          {
+            "label": "Donor",
+            "link_to": "Donor",
+            "type": "Link"
+          },
+          {
+            "label": "Donor Organization",
+            "link_to": "Donor Organization",
+            "type": "Link"
+          },
+          {
+            "label": "Receiver",
+            "link_to": "Receiver",
+            "type": "Link"
+          },
+          {
+            "label": "NGO Partner",
+            "link_to": "NGO Partner",
+            "type": "Link"
+          },
+          {
+            "label": "Volunteer",
+            "link_to": "Volunteer",
+            "type": "Link"
+          }
+        ]
+      },
+      {
+        "label": "Transactions",
+        "icon": "exchange",
+        "items": [
+          {
+            "label": "Food Donation",
+            "link_to": "Food Donation",
+            "type": "Link"
+          },
+          {
+            "label": "Food Request",
+            "link_to": "Food Request",
+            "type": "Link"
+          },
+          {
+            "label": "Pickup Assignment",
+            "link_to": "Pickup Assignment",
+            "type": "Link"
+          },
+          {
+            "label": "Delivery Tracking",
+            "link_to": "Delivery Tracking",
+            "type": "Link"
+          }
+        ]
+      },
+      {
+        "label": "Reports",
+        "icon": "bar-chart",
+        "items": [
+          {
+            "label": "Food Donation Report",
+            "link_to": "Food Donation Report",
+            "type": "Report"
+          },
+          {
+            "label": "Food Request Report",
+            "link_to": "Food Request Report",
+            "type": "Report"
+          }
+        ]
+      }
+    ]
+  }
+]

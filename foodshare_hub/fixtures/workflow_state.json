@@ -1,0 +1,35 @@
+[
+  {
+    "doctype": "Workflow State",
+    "workflow_state_name": "Draft",
+    "__onload": true
+  },
+  {
+    "doctype": "Workflow State",
+    "workflow_state_name": "Available"
+  },
+  {
+    "doctype": "Workflow State",
+    "workflow_state_name": "Collected"
+  },
+  {
+    "doctype": "Workflow State",
+    "workflow_state_name": "Expired"
+  },
+  {
+    "doctype": "Workflow State",
+    "workflow_state_name": "Submitted"
+  },
+  {
+    "doctype": "Workflow State",
+    "workflow_state_name": "Approved"
+  },
+  {
+    "doctype": "Workflow State",
+    "workflow_state_name": "Fulfilled"
+  },
+  {
+    "doctype": "Workflow State",
+    "workflow_state_name": "Rejected"
+  }
+]

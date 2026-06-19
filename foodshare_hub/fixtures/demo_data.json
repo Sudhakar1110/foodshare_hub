@@ -1,0 +1,92 @@
+[
+  {
+    "doctype": "Food Category",
+    "category_name": "Cooked Meals",
+    "description": "Ready to eat cooked meals and prepared food",
+    "status": "Active"
+  },
+  {
+    "doctype": "Food Category",
+    "category_name": "Fresh Produce",
+    "description": "Fresh fruits and vegetables",
+    "status": "Active"
+  },
+  {
+    "doctype": "Food Category",
+    "category_name": "Baked Goods",
+    "description": "Bread, pastries, cakes and bakery items",
+    "status": "Active"
+  },
+  {
+    "doctype": "Food Category",
+    "category_name": "Dairy Products",
+    "description": "Milk, cheese, yogurt and other dairy items",
+    "status": "Active"
+  },
+  {
+    "doctype": "Food Category",
+    "category_name": "Beverages",
+    "description": "Drinks, juices, water and other beverages",
+    "status": "Active"
+  },
+  {
+    "doctype": "Food Category",
+    "category_name": "Canned Goods",
+    "description": "Canned and preserved food items",
+    "status": "Active"
+  },
+  {
+    "doctype": "Donor Organization",
+    "organization_name": "Local Restaurant Association",
+    "contact_person": "John Smith",
+    "contact_email": "john@localrestaurants.com",
+    "contact_phone": "+1-555-0101",
+    "address": "123 Restaurant Row, Food City",
+    "status": "Active"
+  },
+  {
+    "doctype": "Donor Organization",
+    "organization_name": "Corporate Catering Inc",
+    "contact_person": "Sarah Johnson",
+    "contact_email": "sarah@corporatecatering.com",
+    "contact_phone": "+1-555-0102",
+    "address": "456 Business Park, Metro City",
+    "status": "Active"
+  },
+  {
+    "doctype": "Donor Organization",
+    "organization_name": "Grocery Store Chain",
+    "contact_person": "Mike Brown",
+    "contact_email": "mike@grocerystores.com",
+    "contact_phone": "+1-555-0103",
+    "address": "789 Market Street, Downtown",
+    "status": "Active"
+  },
+  {
+    "doctype": "NGO Partner",
+    "ngo_name": "Community Food Bank",
+    "contact_person": "Emily Davis",
+    "phone": "+1-555-0201",
+    "email": "emily@foodbank.org",
+    "address": "100 Charity Lane, Help Town",
+    "status": "Active"
+  },
+  {
+    "doctype": "NGO Partner",
+    "ngo_name": "Shelter Support Network",
+    "contact_person": "Robert Wilson",
+    "phone": "+1-555-0202",
+    "email": "robert@shelterhelp.org",
+    "address": "200 Hope Avenue, Care City",
+    "status": "Active"
+  },
+  {
+    "doctype": "NGO Partner",
+    "ngo_name": "Youth Education Foundation",
+    "contact_person": "Lisa Anderson",
+    "phone": "+1-555-0203",
+    "email": "lisa@yef.org",
+    "address": "300 Learning Road, Grow Village",
+    "status": "Active"
+  }
+]

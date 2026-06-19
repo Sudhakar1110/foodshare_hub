@@ -1,0 +1,120 @@
+{
+  "doctype": "DocType",
+  "name": "Food Request",
+  "module": "Transactions",
+  "custom": 0,
+  "istable": 0,
+  "autoname": "FR-.YYYY.-.#####",
+  "naming_rule": "Expression",
+  "editable_grid": 0,
+  "track_changes": 1,
+  "engine": "InnoDB",
+  "is_submittable": 0,
+  "has_web_view": 1,
+  "workflow_state_field": "status",
+  "fields": [
+    {
+      "fieldname": "receiver",
+      "label": "Receiver",
+      "fieldtype": "Link",
+      "options": "Receiver",
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "food_category",
+      "label": "Food Category",
+      "fieldtype": "Link",
+      "options": "Food Category",
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "required_quantity",
+      "label": "Required Quantity",
+      "fieldtype": "Float",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "unit",
+      "label": "Unit",
+      "fieldtype": "Select",
+      "options": "Kg\nLiters\nPieces\nBoxes\nPackages",
+      "default": "Kg",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "request_date",
+      "label": "Request Date",
+      "fieldtype": "Date",
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "default": "Today"
+    },
+    {
+      "fieldname": "delivery_date",
+      "label": "Preferred Delivery Date",
+      "fieldtype": "Date",
+      "in_list_view": 0
+    },
+    {
+      "fieldname": "delivery_address",
+      "label": "Delivery Address",
+      "fieldtype": "Small Text",
+      "in_list_view": 0
+    },
+    {
+      "fieldname": "status",
+      "label": "Status",
+      "fieldtype": "Select",
+      "options": "Draft\nSubmitted\nApproved\nFulfilled\nRejected",
+      "default": "Draft",
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "remarks",
+      "label": "Remarks",
+      "fieldtype": "Text",
+      "hidden": 1
+    },
+    {
+      "fieldname": "priority",
+      "label": "Priority",
+      "fieldtype": "Select",
+      "options": "Low\nMedium\nHigh\nUrgent",
+      "default": "Medium",
+      "in_list_view": 1
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    },
+    {
+      "role": "FoodShare Administrator",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    },
+    {
+      "role": "Receiver User",
+      "read": 1,
+      "write": 1,
+      "create": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "track_seen": 1,
+  "index_web_pages_for_search": 1
+}

@@ -1,0 +1,50 @@
+{% extends "templates/web.html" %}
+{% block page_content %}
+<section class="donate-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h1 class="mb-4">Donate Food</h1>
+                <p class="lead mb-4">Thank you for your interest in donating food. Your contribution can make a real difference in someone's life.</p>
+                
+                {% if frappe.session.user == 'Guest' %}
+                <div class="alert alert-info">
+                    <p class="mb-0"><strong>Please login to donate food.</strong></p>
+                    <a href="/login" class="btn btn-primary mt-3">Login</a>
+                </div>
+                {% else %}
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title mb-4">Create Food Donation</h3>
+                        <p>Click the button below to create a new food donation entry.</p>
+                        <a href="/app/food-donation/new-food-donation-1" class="btn btn-primary btn-lg">Create Donation</a>
+                    </div>
+                </div>
+                {% endif %}
+                
+                <div class="mt-5">
+                    <h3>What We Accept</h3>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">🍽️ Cooked meals and prepared food</li>
+                        <li class="list-group-item">🥬 Fresh fruits and vegetables</li>
+                        <li class="list-group-item">🍞 Baked goods and bread</li>
+                        <li class="list-group-item">🥛 Dairy products</li>
+                        <li class="list-group-item">🥫 Canned goods and non-perishables</li>
+                        <li class="list-group-item">💧 Beverages and packaged drinks</li>
+                    </ul>
+                </div>
+                
+                <div class="mt-5">
+                    <h3>Donation Guidelines</h3>
+                    <ul>
+                        <li>Food must be within expiry date</li>
+                        <li>Proper packaging is required</li>
+                        <li>Provide accurate pickup information</li>
+                        <li>Contact us for large donations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

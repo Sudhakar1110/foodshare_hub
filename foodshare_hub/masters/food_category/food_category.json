@@ -1,0 +1,62 @@
+{
+  "doctype": "DocType",
+  "name": "Food Category",
+  "module": "Masters",
+  "custom": 0,
+  "istable": 0,
+  "autoname": "field:category_name",
+  "naming_rule": "By fieldname",
+  "editable_grid": 0,
+  "track_changes": 1,
+  "engine": "InnoDB",
+  "fields": [
+    {
+      "fieldname": "category_name",
+      "label": "Category Name",
+      "fieldtype": "Data",
+      "reqd": 1,
+      "unique": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "description",
+      "label": "Description",
+      "fieldtype": "Small Text",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "status",
+      "label": "Status",
+      "fieldtype": "Select",
+      "options": "Active\nInactive",
+      "default": "Active",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "icon",
+      "label": "Icon",
+      "fieldtype": "Icon",
+      "hidden": 1
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    },
+    {
+      "role": "FoodShare Administrator",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "track_seen": 1,
+  "index_web_pages_for_search": 1
+}
