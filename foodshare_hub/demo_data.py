@@ -9,6 +9,7 @@ Usage:
 """
 
 import random
+import re
 from datetime import datetime, timedelta
 
 import frappe
@@ -161,6 +162,27 @@ def safe_insert(doctype, data_dict, check_field=None, verbose=False):
         return None
 
 
+def sanitize_email_localpart(name):
+    """Convert a display name into a safe email local-part.
+
+    Removes apostrophes, special chars, and consolidates dots/spaces.
+    Example: "St. Mary's Shelter" -> "st.mary.shelter"
+    """
+    # Lowercase first
+    local = name.lower()
+    # Replace apostrophes and ampersands with nothing
+    local = local.replace("'", "").replace("&", "and")
+    # Replace any non-alphanumeric char (except dot) with a space
+    local = re.sub(r"[^a-z0-9. ]", " ", local)
+    # Replace spaces with dots
+    local = local.replace(" ", ".")
+    # Collapse consecutive dots into one
+    local = re.sub(r"\.+", ".", local)
+    # Strip leading/trailing dots
+    local = local.strip(".")
+    return local
+
+
 def random_datetime(start_date=None, max_days_ago=30, max_days_ahead=7):
     """Return a random datetime string within range."""
     if start_date is None:
@@ -222,7 +244,7 @@ def create_donors(verbose=False):
 
         donor_data = {
             "donor_name": name,
-            "email": f"{name.lower().replace(' ', '.')}@email.com",
+            "email": f"{sanitize_email_localpart(name)}@email.com",
             "phone": f"+1-555-{random.randint(1000, 9999)}",
             "organization": random.choice(org_names),
             "address": f"{random.randint(100, 9999)} {random.choice(['Oak St', 'Elm Ave', 'Maple Dr', 'Pine Ln', 'Cedar Ct'])}, {random.choice(['Food City', 'Metro City', 'Green Valley', 'Downtown', 'Uptown'])}, {random.choice(['FC', 'MC', 'GV', 'DT', 'UP'])}{random.randint(10000, 99999)}",
@@ -248,7 +270,7 @@ def create_receivers(verbose=False):
 
         receiver_data = {
             "receiver_name": name,
-            "email": f"{name.lower().replace(' ', '.')}@receivermail.org",
+            "email": f"{sanitize_email_localpart(name)}@receivermail.org",
             "phone": f"+1-555-{random.randint(1000, 9999)}",
             "address": f"{random.randint(100, 9999)} {random.choice(['Support St', 'Care Ave', 'Help Blvd', 'Hope Dr', 'Aid Ln'])}, {random.choice(['Care City', 'Help Town', 'Safe Haven', 'Harmony City', 'Justice City'])}, {random.choice(['CC', 'HT', 'SH', 'HC', 'JC'])}{random.randint(10000, 99999)}",
             "organization": random.choice(
@@ -278,7 +300,7 @@ def create_volunteers(verbose=False):
 
         volunteer_data = {
             "volunteer_name": name,
-            "email": f"{name.lower().replace(' ', '.')}@volunteers.org",
+            "email": f"{sanitize_email_localpart(name)}@volunteers.org",
             "phone": f"+1-555-{random.randint(1000, 9999)}",
             "address": f"{random.randint(100, 9999)} {random.choice(['Volunteer Ave', 'Service St', 'Helpful Ln', 'Giving Dr', 'Community Ct'])}, {random.choice(['Care City', 'Help Town', 'Food City', 'Green Valley', 'Harmony City'])}, {random.choice(['CC', 'HT', 'FC', 'GV', 'HC'])}{random.randint(10000, 99999)}",
             "availability": random.choice(AVAILABILITY_OPTIONS),
@@ -322,58 +344,63 @@ def create_food_donations(count=55, verbose=False):
         log(f"\n📦 Food Donations: already have {existing_count}, skipping", verbose)
         return 0
 
-    for i in range(needed):
-        donor = random.choice(donors)
-        category = random.choice(categories)
+    # Bypass workflow validation when inserting demo data directly
+    frappe.flags.in_import = True
+    try:
+        for i in range(needed):
+            donor = random.choice(donors)
+            category = random.choice(categories)
 
-        # Generate pickup datetime in the past (for most) or near future
-        days_ago = random.randint(1, 45)
-        pickup_dt = datetime.now() - timedelta(days=days_ago, hours=random.randint(0, 12))
+            # Generate pickup datetime in the past (for most) or near future
+            days_ago = random.randint(1, 45)
+            pickup_dt = datetime.now() - timedelta(days=days_ago, hours=random.randint(0, 12))
 
-        # Expiry is after pickup (1 hour to 7 days)
-        expiry_dt = pickup_dt + timedelta(
-            hours=random.randint(2, 48),
-            minutes=random.choice([0, 15, 30, 45]),
-        )
-
-        quantity = round(random.uniform(1, 100), 1)
-
-        # Determine status distribution:
-        # ~20% Draft, ~40% Available, ~25% Collected, ~15% Expired
-        status_roll = random.random()
-        if status_roll < 0.20:
-            status = "Draft"
-        elif status_roll < 0.60:
-            status = "Available"
-        elif status_roll < 0.85:
-            status = "Collected"
-        else:
-            status = "Expired"
-
-        donation_data = {
-            "donor": donor,
-            "food_category": category,
-            "food_description": random.choice(FOOD_DESCRIPTIONS),
-            "quantity": quantity,
-            "unit": random.choice(UNIT_OPTIONS),
-            "pickup_datetime": pickup_dt.strftime("%Y-%m-%d %H:%M:%S"),
-            "expiry_datetime": expiry_dt.strftime("%Y-%m-%d %H:%M:%S"),
-            "pickup_address": f"{random.randint(100, 9999)} {random.choice(['Donor St', 'Give Ave', 'Share Blvd', 'Care Dr'])}, {random.choice(['Food City', 'Metro City', 'Green Valley'])}, {random.choice(['FC', 'MC', 'GV'])}{random.randint(10000, 99999)}",
-            "status": status,
-        }
-
-        try:
-            doc = frappe.get_doc({"doctype": "Food Donation", **donation_data})
-            doc.insert(ignore_permissions=True, ignore_mandatory=False)
-            created += 1
-            if verbose and created % 10 == 0:
-                log(f"  ✅ Created Food Donation {created}/{needed}", verbose)
-        except Exception as e:
-            log(f"  ❌ Failed to create Food Donation: {e}", verbose)
-            frappe.log_error(
-                message=f"Failed to create demo Food Donation: {frappe.get_traceback()}",
-                title="FoodShare Hub Demo Data - Food Donation",
+            # Expiry is after pickup (1 hour to 7 days)
+            expiry_dt = pickup_dt + timedelta(
+                hours=random.randint(2, 48),
+                minutes=random.choice([0, 15, 30, 45]),
             )
+
+            quantity = round(random.uniform(1, 100), 1)
+
+            # Determine status distribution:
+            # ~20% Draft, ~40% Available, ~25% Collected, ~15% Expired
+            status_roll = random.random()
+            if status_roll < 0.20:
+                status = "Draft"
+            elif status_roll < 0.60:
+                status = "Available"
+            elif status_roll < 0.85:
+                status = "Collected"
+            else:
+                status = "Expired"
+
+            donation_data = {
+                "donor": donor,
+                "food_category": category,
+                "food_description": random.choice(FOOD_DESCRIPTIONS),
+                "quantity": quantity,
+                "unit": random.choice(UNIT_OPTIONS),
+                "pickup_datetime": pickup_dt.strftime("%Y-%m-%d %H:%M:%S"),
+                "expiry_datetime": expiry_dt.strftime("%Y-%m-%d %H:%M:%S"),
+                "pickup_address": f"{random.randint(100, 9999)} {random.choice(['Donor St', 'Give Ave', 'Share Blvd', 'Care Dr'])}, {random.choice(['Food City', 'Metro City', 'Green Valley'])}, {random.choice(['FC', 'MC', 'GV'])}{random.randint(10000, 99999)}",
+                "status": status,
+            }
+
+            try:
+                doc = frappe.get_doc({"doctype": "Food Donation", **donation_data})
+                doc.insert(ignore_permissions=True, ignore_mandatory=False)
+                created += 1
+                if verbose and created % 10 == 0:
+                    log(f"  ✅ Created Food Donation {created}/{needed}", verbose)
+            except Exception as e:
+                log(f"  ❌ Failed to create Food Donation: {e}", verbose)
+                frappe.log_error(
+                    message=f"Failed to create demo Food Donation: {frappe.get_traceback()}",
+                    title="FoodShare Hub Demo Data - Food Donation",
+                )
+    finally:
+        frappe.flags.in_import = False
 
     log(f"\n📦 Food Donations: {created} new / {frappe.db.count('Food Donation')} total", verbose)
     return created
@@ -396,58 +423,63 @@ def create_food_requests(count=45, verbose=False):
         log(f"\n📦 Food Requests: already have {existing_count}, skipping", verbose)
         return 0
 
-    for i in range(needed):
-        receiver = random.choice(receivers)
-        category = random.choice(categories)
+    # Bypass workflow validation when inserting demo data directly
+    frappe.flags.in_import = True
+    try:
+        for i in range(needed):
+            receiver = random.choice(receivers)
+            category = random.choice(categories)
 
-        days_ago = random.randint(1, 30)
-        request_date = getdate(add_days(None, -days_ago))
+            days_ago = random.randint(1, 30)
+            request_date = getdate(add_days(None, -days_ago))
 
-        # Delivery date: some have future dates, some past
-        delivery_offset = random.randint(-5, 14)
-        delivery_date = add_days(request_date, delivery_offset)
-        if delivery_date < request_date:
-            delivery_date = request_date
+            # Delivery date: some have future dates, some past
+            delivery_offset = random.randint(-5, 14)
+            delivery_date = add_days(request_date, delivery_offset)
+            if delivery_date < request_date:
+                delivery_date = request_date
 
-        quantity = round(random.uniform(5, 200), 1)
+            quantity = round(random.uniform(5, 200), 1)
 
-        # Status distribution
-        status_roll = random.random()
-        if status_roll < 0.20:
-            status = "Draft"
-        elif status_roll < 0.40:
-            status = "Submitted"
-        elif status_roll < 0.65:
-            status = "Approved"
-        elif status_roll < 0.85:
-            status = "Fulfilled"
-        else:
-            status = "Rejected"
+            # Status distribution
+            status_roll = random.random()
+            if status_roll < 0.20:
+                status = "Draft"
+            elif status_roll < 0.40:
+                status = "Submitted"
+            elif status_roll < 0.65:
+                status = "Approved"
+            elif status_roll < 0.85:
+                status = "Fulfilled"
+            else:
+                status = "Rejected"
 
-        request_data = {
-            "receiver": receiver,
-            "food_category": category,
-            "required_quantity": quantity,
-            "unit": random.choice(UNIT_OPTIONS),
-            "request_date": str(request_date),
-            "delivery_date": str(delivery_date) if random.random() > 0.3 else "",
-            "delivery_address": f"{random.randint(100, 9999)} {random.choice(['Receiver Rd', 'Aid Ave', 'Support St', 'Care Ln'])}, {random.choice(['Care City', 'Help Town', 'Safe Haven', 'Harmony City'])}, {random.choice(['CC', 'HT', 'SH', 'HC'])}{random.randint(10000, 99999)}",
-            "priority": random.choice(PRIORITY_OPTIONS),
-            "status": status,
-        }
+            request_data = {
+                "receiver": receiver,
+                "food_category": category,
+                "required_quantity": quantity,
+                "unit": random.choice(UNIT_OPTIONS),
+                "request_date": str(request_date),
+                "delivery_date": str(delivery_date) if random.random() > 0.3 else "",
+                "delivery_address": f"{random.randint(100, 9999)} {random.choice(['Receiver Rd', 'Aid Ave', 'Support St', 'Care Ln'])}, {random.choice(['Care City', 'Help Town', 'Safe Haven', 'Harmony City'])}, {random.choice(['CC', 'HT', 'SH', 'HC'])}{random.randint(10000, 99999)}",
+                "priority": random.choice(PRIORITY_OPTIONS),
+                "status": status,
+            }
 
-        try:
-            doc = frappe.get_doc({"doctype": "Food Request", **request_data})
-            doc.insert(ignore_permissions=True, ignore_mandatory=False)
-            created += 1
-            if verbose and created % 10 == 0:
-                log(f"  ✅ Created Food Request {created}/{needed}", verbose)
-        except Exception as e:
-            log(f"  ❌ Failed to create Food Request: {e}", verbose)
-            frappe.log_error(
-                message=f"Failed to create demo Food Request: {frappe.get_traceback()}",
-                title="FoodShare Hub Demo Data - Food Request",
-            )
+            try:
+                doc = frappe.get_doc({"doctype": "Food Request", **request_data})
+                doc.insert(ignore_permissions=True, ignore_mandatory=False)
+                created += 1
+                if verbose and created % 10 == 0:
+                    log(f"  ✅ Created Food Request {created}/{needed}", verbose)
+            except Exception as e:
+                log(f"  ❌ Failed to create Food Request: {e}", verbose)
+                frappe.log_error(
+                    message=f"Failed to create demo Food Request: {frappe.get_traceback()}",
+                    title="FoodShare Hub Demo Data - Food Request",
+                )
+    finally:
+        frappe.flags.in_import = False
 
     log(f"\n📦 Food Requests: {created} new / {frappe.db.count('Food Request')} total", verbose)
     return created
