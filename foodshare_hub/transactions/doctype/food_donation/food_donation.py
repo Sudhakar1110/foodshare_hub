@@ -5,6 +5,12 @@ from frappe.utils import now_datetime, get_datetime
 
 class FoodDonation(Document):
     """Food Donation Transaction Document."""
+
+    website = frappe._dict(
+        condition_field="status",
+        condition_value="Available",
+        page_title_field="donor",
+    )
     
     def validate(self):
         """Validate Food Donation."""
