@@ -1,35 +1,42 @@
 [
   {
     "doctype": "Workflow State",
-    "workflow_state_name": "Draft",
-    "__onload": true
+    "name": "Draft",
+    "workflow_state_name": "Draft"
   },
   {
     "doctype": "Workflow State",
+    "name": "Available",
     "workflow_state_name": "Available"
   },
   {
     "doctype": "Workflow State",
+    "name": "Collected",
     "workflow_state_name": "Collected"
   },
   {
     "doctype": "Workflow State",
+    "name": "Expired",
     "workflow_state_name": "Expired"
   },
   {
     "doctype": "Workflow State",
+    "name": "Submitted",
     "workflow_state_name": "Submitted"
   },
   {
     "doctype": "Workflow State",
+    "name": "Approved",
     "workflow_state_name": "Approved"
   },
   {
     "doctype": "Workflow State",
+    "name": "Fulfilled",
     "workflow_state_name": "Fulfilled"
   },
   {
     "doctype": "Workflow State",
+    "name": "Rejected",
     "workflow_state_name": "Rejected"
   }
 ]

@@ -1,6 +1,7 @@
 [
   {
     "doctype": "Custom DocPerm",
+    "name": "Food Category-Donor User",
     "parent": "Food Category",
     "role": "Donor User",
     "read": 1,
@@ -18,6 +19,7 @@
   },
   {
     "doctype": "Custom DocPerm",
+    "name": "Donor-Donor User",
     "parent": "Donor",
     "role": "Donor User",
     "read": 1,
@@ -35,6 +37,7 @@
   },
   {
     "doctype": "Custom DocPerm",
+    "name": "Donor Organization-Donor User",
     "parent": "Donor Organization",
     "role": "Donor User",
     "read": 1,
@@ -52,6 +55,7 @@
   },
   {
     "doctype": "Custom DocPerm",
+    "name": "Receiver-Receiver User",
     "parent": "Receiver",
     "role": "Receiver User",
     "read": 1,
@@ -69,6 +73,7 @@
   },
   {
     "doctype": "Custom DocPerm",
+    "name": "Receiver-Donor User",
     "parent": "Receiver",
     "role": "Donor User",
     "read": 1,
@@ -86,6 +91,7 @@
   },
   {
     "doctype": "Custom DocPerm",
+    "name": "Volunteer-Volunteer User",
     "parent": "Volunteer",
     "role": "Volunteer User",
     "read": 1,
@@ -103,6 +109,7 @@
   },
   {
     "doctype": "Custom DocPerm",
+    "name": "NGO Partner-Volunteer User",
     "parent": "NGO Partner",
     "role": "Volunteer User",
     "read": 1,
@@ -120,6 +127,7 @@
   },
   {
     "doctype": "Custom DocPerm",
+    "name": "Food Request-Donor User",
     "parent": "Food Request",
     "role": "Donor User",
     "read": 1,
@@ -137,6 +145,7 @@
   },
   {
     "doctype": "Custom DocPerm",
+    "name": "Pickup Assignment-Donor User",
     "parent": "Pickup Assignment",
     "role": "Donor User",
     "read": 1,
@@ -154,6 +163,7 @@
   },
   {
     "doctype": "Custom DocPerm",
+    "name": "Delivery Tracking-Donor User",
     "parent": "Delivery Tracking",
     "role": "Donor User",
     "read": 1,
@@ -171,6 +181,7 @@
   },
   {
     "doctype": "Custom DocPerm",
+    "name": "Food Donation-Volunteer User",
     "parent": "Food Donation",
     "role": "Volunteer User",
     "read": 1,
@@ -188,6 +199,7 @@
   },
   {
     "doctype": "Custom DocPerm",
+    "name": "Food Request-Volunteer User",
     "parent": "Food Request",
     "role": "Volunteer User",
     "read": 1,

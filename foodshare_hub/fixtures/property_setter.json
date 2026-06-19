@@ -1,6 +1,7 @@
 [
   {
     "doctype": "Property Setter",
+    "name": "Food Donation-search_fields",
     "doc_type": "Food Donation",
     "doctype_or_field": "DocType",
     "field_name": null,
@@ -9,6 +10,7 @@
   },
   {
     "doctype": "Property Setter",
+    "name": "Food Donation-default_print_format",
     "doc_type": "Food Donation",
     "doctype_or_field": "DocType",
     "field_name": null,
@@ -17,6 +19,7 @@
   },
   {
     "doctype": "Property Setter",
+    "name": "Food Request-search_fields",
     "doc_type": "Food Request",
     "doctype_or_field": "DocType",
     "field_name": null,
@@ -25,6 +28,7 @@
   },
   {
     "doctype": "Property Setter",
+    "name": "Food Request-default_print_format",
     "doc_type": "Food Request",
     "doctype_or_field": "DocType",
     "field_name": null,
@@ -33,6 +37,7 @@
   },
   {
     "doctype": "Property Setter",
+    "name": "Pickup Assignment-search_fields",
     "doc_type": "Pickup Assignment",
     "doctype_or_field": "DocType",
     "field_name": null,
@@ -41,6 +46,7 @@
   },
   {
     "doctype": "Property Setter",
+    "name": "Delivery Tracking-search_fields",
     "doc_type": "Delivery Tracking",
     "doctype_or_field": "DocType",
     "field_name": null,
