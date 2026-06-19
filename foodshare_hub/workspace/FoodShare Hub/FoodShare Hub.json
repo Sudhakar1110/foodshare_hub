@@ -1,0 +1,145 @@
+{
+ "doctype": "Workspace",
+ "name": "FoodShare Hub",
+ "module": "FoodShare Hub",
+ "app": "foodshare_hub",
+ "icon": "share-alt",
+ "indicator_color": "green",
+ "title": "FoodShare Hub",
+ "label": "FoodShare Hub",
+ "is_hidden": 0,
+ "public": 1,
+ "sequence_id": 1,
+ "content": "[{\"type\":\"card\",\"card_name\":\"Masters\",\"label\":\"Masters\",\"hidden\":0,\"links\":[{\"type\":\"link\",\"link_to\":\"Food Category\",\"label\":\"Food Category\",\"hidden\":0,\"link_type\":\"DocType\",\"is_query_report\":0,\"onboard\":1,\"dependencies\":\"\"},{\"type\":\"link\",\"link_to\":\"Donor\",\"label\":\"Donor\",\"hidden\":0,\"link_type\":\"DocType\",\"is_query_report\":0,\"onboard\":1,\"dependencies\":\"\"},{\"type\":\"link\",\"link_to\":\"Donor Organization\",\"label\":\"Donor Organization\",\"hidden\":0,\"link_type\":\"DocType\",\"is_query_report\":0,\"onboard\":1,\"dependencies\":\"\"},{\"type\":\"link\",\"link_to\":\"Receiver\",\"label\":\"Receiver\",\"hidden\":0,\"link_type\":\"DocType\",\"is_query_report\":0,\"onboard\":1,\"dependencies\":\"\"},{\"type\":\"link\",\"link_to\":\"NGO Partner\",\"label\":\"NGO Partner\",\"hidden\":0,\"link_type\":\"DocType\",\"is_query_report\":0,\"onboard\":1,\"dependencies\":\"\"},{\"type\":\"link\",\"link_to\":\"Volunteer\",\"label\":\"Volunteer\",\"hidden\":0,\"link_type\":\"DocType\",\"is_query_report\":0,\"onboard\":1,\"dependencies\":\"\"}]},{\"type\":\"card\",\"card_name\":\"Transactions\",\"label\":\"Transactions\",\"hidden\":0,\"links\":[{\"type\":\"link\",\"link_to\":\"Food Donation\",\"label\":\"Food Donation\",\"hidden\":0,\"link_type\":\"DocType\",\"is_query_report\":0,\"onboard\":1,\"dependencies\":\"\"},{\"type\":\"link\",\"link_to\":\"Food Request\",\"label\":\"Food Request\",\"hidden\":0,\"link_type\":\"DocType\",\"is_query_report\":0,\"onboard\":1,\"dependencies\":\"\"},{\"type\":\"link\",\"link_to\":\"Pickup Assignment\",\"label\":\"Pickup Assignment\",\"hidden\":0,\"link_type\":\"DocType\",\"is_query_report\":0,\"onboard\":1,\"dependencies\":\"\"},{\"type\":\"link\",\"link_to\":\"Delivery Tracking\",\"label\":\"Delivery Tracking\",\"hidden\":0,\"link_type\":\"DocType\",\"is_query_report\":0,\"onboard\":1,\"dependencies\":\"\"}]},{\"type\":\"card\",\"card_name\":\"Reports\",\"label\":\"Reports\",\"hidden\":0,\"links\":[{\"type\":\"link\",\"link_to\":\"Food Donation Report\",\"label\":\"Food Donation Report\",\"hidden\":0,\"link_type\":\"Report\",\"is_query_report\":1,\"onboard\":0,\"dependencies\":\"\"},{\"type\":\"link\",\"link_to\":\"Food Request Report\",\"label\":\"Food Request Report\",\"hidden\":0,\"link_type\":\"Report\",\"is_query_report\":1,\"onboard\":0,\"dependencies\":\"\"}]}]",
+ "links": [
+  {
+   "type": "Card Break",
+   "label": "Masters",
+   "icon": "star",
+   "hidden": 0,
+   "link_count": 6
+  },
+  {
+   "type": "Link",
+   "label": "Food Category",
+   "link_type": "DocType",
+   "link_to": "Food Category",
+   "onboard": 1,
+   "is_query_report": 0,
+   "dependencies": ""
+  },
+  {
+   "type": "Link",
+   "label": "Donor",
+   "link_type": "DocType",
+   "link_to": "Donor",
+   "onboard": 1,
+   "is_query_report": 0,
+   "dependencies": ""
+  },
+  {
+   "type": "Link",
+   "label": "Donor Organization",
+   "link_type": "DocType",
+   "link_to": "Donor Organization",
+   "onboard": 1,
+   "is_query_report": 0,
+   "dependencies": ""
+  },
+  {
+   "type": "Link",
+   "label": "Receiver",
+   "link_type": "DocType",
+   "link_to": "Receiver",
+   "onboard": 1,
+   "is_query_report": 0,
+   "dependencies": ""
+  },
+  {
+   "type": "Link",
+   "label": "NGO Partner",
+   "link_type": "DocType",
+   "link_to": "NGO Partner",
+   "onboard": 1,
+   "is_query_report": 0,
+   "dependencies": ""
+  },
+  {
+   "type": "Link",
+   "label": "Volunteer",
+   "link_type": "DocType",
+   "link_to": "Volunteer",
+   "onboard": 1,
+   "is_query_report": 0,
+   "dependencies": ""
+  },
+  {
+   "type": "Card Break",
+   "label": "Transactions",
+   "icon": "retweet",
+   "hidden": 0,
+   "link_count": 4
+  },
+  {
+   "type": "Link",
+   "label": "Food Donation",
+   "link_type": "DocType",
+   "link_to": "Food Donation",
+   "onboard": 1,
+   "is_query_report": 0,
+   "dependencies": ""
+  },
+  {
+   "type": "Link",
+   "label": "Food Request",
+   "link_type": "DocType",
+   "link_to": "Food Request",
+   "onboard": 1,
+   "is_query_report": 0,
+   "dependencies": ""
+  },
+  {
+   "type": "Link",
+   "label": "Pickup Assignment",
+   "link_type": "DocType",
+   "link_to": "Pickup Assignment",
+   "onboard": 1,
+   "is_query_report": 0,
+   "dependencies": ""
+  },
+  {
+   "type": "Link",
+   "label": "Delivery Tracking",
+   "link_type": "DocType",
+   "link_to": "Delivery Tracking",
+   "onboard": 1,
+   "is_query_report": 0,
+   "dependencies": ""
+  },
+  {
+   "type": "Card Break",
+   "label": "Reports",
+   "icon": "list",
+   "hidden": 0,
+   "link_count": 2
+  },
+  {
+   "type": "Link",
+   "label": "Food Donation Report",
+   "link_type": "Report",
+   "link_to": "Food Donation Report",
+   "onboard": 0,
+   "is_query_report": 1,
+   "dependencies": ""
+  },
+  {
+   "type": "Link",
+   "label": "Food Request Report",
+   "link_type": "Report",
+   "link_to": "Food Request Report",
+   "onboard": 0,
+   "is_query_report": 1,
+   "dependencies": ""
+  }
+ ]
+}
