@@ -1,42 +1,49 @@
 [
   {
     "doctype": "Food Category",
+    "name": "Cooked Meals",
     "category_name": "Cooked Meals",
     "description": "Ready to eat cooked meals and prepared food",
     "status": "Active"
   },
   {
     "doctype": "Food Category",
+    "name": "Fresh Produce",
     "category_name": "Fresh Produce",
     "description": "Fresh fruits and vegetables",
     "status": "Active"
   },
   {
     "doctype": "Food Category",
+    "name": "Baked Goods",
     "category_name": "Baked Goods",
     "description": "Bread, pastries, cakes and bakery items",
     "status": "Active"
   },
   {
     "doctype": "Food Category",
+    "name": "Dairy Products",
     "category_name": "Dairy Products",
     "description": "Milk, cheese, yogurt and other dairy items",
     "status": "Active"
   },
   {
     "doctype": "Food Category",
+    "name": "Beverages",
     "category_name": "Beverages",
     "description": "Drinks, juices, water and other beverages",
     "status": "Active"
   },
   {
     "doctype": "Food Category",
+    "name": "Canned Goods",
     "category_name": "Canned Goods",
     "description": "Canned and preserved food items",
     "status": "Active"
   },
   {
     "doctype": "Donor Organization",
+    "name": "Local Restaurant Association",
     "organization_name": "Local Restaurant Association",
     "contact_person": "John Smith",
     "contact_email": "john@localrestaurants.com",
@@ -46,6 +53,7 @@
   },
   {
     "doctype": "Donor Organization",
+    "name": "Corporate Catering Inc",
     "organization_name": "Corporate Catering Inc",
     "contact_person": "Sarah Johnson",
     "contact_email": "sarah@corporatecatering.com",
@@ -55,6 +63,7 @@
   },
   {
     "doctype": "Donor Organization",
+    "name": "Grocery Store Chain",
     "organization_name": "Grocery Store Chain",
     "contact_person": "Mike Brown",
     "contact_email": "mike@grocerystores.com",
@@ -64,6 +73,7 @@
   },
   {
     "doctype": "NGO Partner",
+    "name": "Community Food Bank",
     "ngo_name": "Community Food Bank",
     "contact_person": "Emily Davis",
     "phone": "+1-555-0201",
@@ -73,6 +83,7 @@
   },
   {
     "doctype": "NGO Partner",
+    "name": "Shelter Support Network",
     "ngo_name": "Shelter Support Network",
     "contact_person": "Robert Wilson",
     "phone": "+1-555-0202",
@@ -82,6 +93,7 @@
   },
   {
     "doctype": "NGO Partner",
+    "name": "Youth Education Foundation",
     "ngo_name": "Youth Education Foundation",
     "contact_person": "Lisa Anderson",
     "phone": "+1-555-0203",
