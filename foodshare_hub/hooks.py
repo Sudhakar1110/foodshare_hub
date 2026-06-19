@@ -17,7 +17,7 @@ fixtures = [
 
 doc_events = {
     "Food Donation": {
-        "validate": "foodshare_hub.transactions.food_donation.food_donation.validate_dates"
+        "validate": "foodshare_hub.transactions.doctype.food_donation.food_donation.validate_dates"
     },
     "*": {
         "on_update": "foodshare_hub.api.utils.update_modified",
