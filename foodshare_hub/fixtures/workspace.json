@@ -5,6 +5,7 @@
     "module": "FoodShare Hub",
     "icon": "share-alt",
     "indicator_color": "green",
+    "title": "FoodShare Hub",
     "label": "FoodShare Hub",
     "type": "Module",
     "is_hidden": 0,
