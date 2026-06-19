@@ -8,7 +8,6 @@
     "indicator_color": "green",
     "title": "FoodShare Hub",
     "label": "FoodShare Hub",
-    "type": "Workspace",
     "is_hidden": 0,
     "public": 1,
     "sequence_id": 1,
